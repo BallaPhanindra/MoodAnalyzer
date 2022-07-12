@@ -1,11 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
-namespace MoodAnalyzer.MoodAnalyzerApp
+
+namespace MoodAnalyzer
 {
-    internal class MoodAnalyse
+    public class MoodAnalyse
     {
         private string message;
 
@@ -20,11 +19,18 @@ namespace MoodAnalyzer.MoodAnalyzerApp
 
         public string AnalyseMood()
         {
-            if (this.message.Contains("Sad"))
+            try
             {
-                return "SAD";
+                if (this.message.Contains("Sad"))
+                {
+                    return "SAD";
+                }
+                else
+                {
+                    return "HAPPY";
+                }
             }
-            else
+            catch
             {
                 return "HAPPY";
             }
