@@ -11,6 +11,9 @@ namespace MoodAnalyzer.MoodAnalyzerTests
     [TestClass]
     public class MoodAnlyzerTest
     {
+        /// <summary>
+        /// TC 1.1: Given “I am in Sad Mood” message Should Return SAD.
+        /// </summary>
         [TestMethod]
         public void GivenSadMoodShouldReturnSAD()
         {
@@ -26,6 +29,9 @@ namespace MoodAnalyzer.MoodAnalyzerTests
             Assert.AreEqual(expected, mood);
         }
 
+        /// <summary>
+        /// TC 1.2  & 2.1: Given “I am in HAPPY Mood” and null message Should Return HAPPY
+        /// </summary>
         [TestMethod]
         [DataRow("I am in HAPPY Mood")]
         public void GivenHAPPYMoodShouldReturnHappy(string message)
@@ -41,6 +47,9 @@ namespace MoodAnalyzer.MoodAnalyzerTests
             Assert.AreEqual(expected, mood);
         }
 
+        /// <summary>
+        /// TC 3.1: Given NULL Mood Should Throw MoodAnalysisException.
+        /// </summary>
         [TestMethod]
         public void Given_NULL_Mood_Should_Throw_MoodAnalysisException()
         {
@@ -56,6 +65,9 @@ namespace MoodAnalyzer.MoodAnalyzerTests
             }
         }
 
+        /// <summary>
+        /// TC 3.2: Given Empty Mood Should Throw MoodAnalysisException Indicating Empty Mood.
+        /// </summary>
         [TestMethod]
         public void Given_Empty_Mood_Should_Throw_MoodAnalysisException_Indicating_EmptyMood()
         {
@@ -71,6 +83,9 @@ namespace MoodAnalyzer.MoodAnalyzerTests
             }
         }
 
+        /// <summary>
+        /// Test Case 4.1 Given MoodAnalyse Class Name Should Return MoodAnalyser Object.
+        /// </summary>
         [TestMethod]
         public void GivenMoodAnalyseClassName_ShouldReturnMoodAnalyseObject()
         {
@@ -79,6 +94,9 @@ namespace MoodAnalyzer.MoodAnalyzerTests
             expected.Equals(obj);
         }
 
+        /// <summary>
+        /// Test Case 4.2 Given Improper Class Name Should throw MoodAnalyssiException.
+        /// </summary>
         [TestMethod]
         public void GivenImproperClassNameShouldThrowMoodAnalysisException()
         {
@@ -94,6 +112,9 @@ namespace MoodAnalyzer.MoodAnalyzerTests
             }
         }
 
+        // <summary>
+        /// Test Case 4.3 Given Improper Constructor should throw MoodAnalysisException.
+        /// </summary>
         [TestMethod]
         public void GivenImproperConstructorShouldThrowMoodAnalysisException()
         {
