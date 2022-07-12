@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace MoodAnalyzer.MoodAnalyzerApp
 {
+
     public class MoodAnalyse
     {
         public MoodAnalyse() { }
