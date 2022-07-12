@@ -1,16 +1,14 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using MoodAnalyzer.MoodAnalyzerApp;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using MoodAnalyzer;
 
-namespace MoodAnalyzer.MoodAnalyzerTest
+namespace MoodAnalyzerTests
 {
     [TestClass]
-    public class MoodAnalyzerTest
+    public class MoodAnlyzerTest
     {
+        /// <summary>
+        /// TC 1.1: Given �I am in Sad Mood� message Should Return SAD.
+        /// </summary>
         [TestMethod]
         public void GivenSadMoodShouldReturnSAD()
         {
@@ -25,12 +23,17 @@ namespace MoodAnalyzer.MoodAnalyzerTest
             // Assert
             Assert.AreEqual(expected, mood);
         }
+
+        /// <summary>
+        /// TC 1.2  & 2.1: Given �I am in HAPPY Mood� and null message Should Return HAPPY
+        /// </summary>
         [TestMethod]
-        public void GivenHAPPYMoodShouldReturnHappy()
+        [DataRow("I am in HAPPY Mood")]
+        [DataRow(null)]
+        public void GivenHAPPYMoodShouldReturnHappy(string message)
         {
             // Arrange
             string expected = "HAPPY";
-            string message = "I am in HAPPY Mood";
             MoodAnalyse moodAnalyse = new MoodAnalyse(message);
 
             // Act
