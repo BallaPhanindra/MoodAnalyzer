@@ -2,11 +2,11 @@
 
 namespace MoodAnalyzer.MoodAnalyzerApp
 {
-    internal class Program
+    class Program
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            Console.WriteLine("Welcome to Mood Analyzer");
         }
     }
 }
