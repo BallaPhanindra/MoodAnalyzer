@@ -1,64 +1,47 @@
-﻿using System;
+using MoodAnalyzer.MoodAnalyzerApp;
+using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
 using System.Text;
-using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 
-namespace MoodAnalyzer.MoodAnalyzerApp
+namespace MoodAnalyzer
 {
-    public class MoodAnalyseFactory
+    public class MoodAnalyse
     {
-        /// <summary>
-        /// CreateMoodAnalyse method to create object of MoodAnalyse class.
-        /// </summary>
-        public static object CreateMoodAnalyse(string className, string constructorName)
-        {
-            string pattern = @"." + constructorName + "$";
-            Match result = Regex.Match(className, pattern);
+        public MoodAnalyse() { }
 
-            if (result.Success)
-            {
-                try
-                {
-                    Assembly executing = Assembly.GetExecutingAssembly();
-                    Type moodAnaylseType = executing.GetType(className);
-                    return Activator.CreateInstance(moodAnaylseType);
-                }
-                catch (ArgumentNullException)
-                {
-                    throw new MoodAnalysisException(MoodAnalysisException.ExceptionType.NO_SUCH_CLASS, "Class Not Found");
-                }
-            }
-            else
-            {
-                throw new MoodAnalysisException(MoodAnalysisException.ExceptionType.NO_SUCH_METHOD, "Constructor is Not Found");
-            }
+        private string message;
+        /// <summary>
+        /// Parameterised Constructor.
+        /// </summary>
+        /// <param name="message"></param>
+        public MoodAnalyse(string message)
+        {
+            this.message = message;
         }
 
-        public static object CreateMoodAnalyseUsingParameterizedConstructor(string className, string constructorName)
+        public string AnalyseMood()
         {
-            Type type = typeof(MoodAnalyse);
-            if (type.Name.Equals(className) || type.FullName.Equals(className))
+            try
             {
-                if (type.Name.Equals(constructorName))
+                if (this.message.Equals(string.Empty))
                 {
-                    ConstructorInfo ctor = type.GetConstructor(new[] { typeof(string) });
-                    object instance = ctor.Invoke(new object[] { "HAPPY" });
-                    return instance;
+                    throw new MoodAnalysisException(MoodAnalysisException.ExceptionType.Empty_Message, "Mood should not be Empty");
+                }
+
+
+                if (this.message.Contains("Sad"))
+                {
+                    return "SAD";
                 }
                 else
                 {
-                    throw new MoodAnalysisException(MoodAnalysisException.ExceptionType.NO_SUCH_METHOD, "Constructor is Not Found");
+                    return "HAPPY";
                 }
-
             }
-            else
+            catch (NullReferenceException)
             {
-                throw new MoodAnalysisException(MoodAnalysisException.ExceptionType.NO_SUCH_CLASS, "Class Not Found");
+                throw new MoodAnalysisException(MoodAnalysisException.ExceptionType.NULL_MESSAGE, "Mood should not be null");
             }
-
         }
     }
 }
