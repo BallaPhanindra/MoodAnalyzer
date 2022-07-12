@@ -1,4 +1,4 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using MoodAnalyzer.MoodAnalyzerApp;
 using System;
 using System.Collections.Generic;
